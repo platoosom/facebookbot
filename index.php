@@ -20,8 +20,8 @@ if (isset($_GET['hub_verify_token'])) {
 // Debug data
 $file = fopen("logs.txt","w"); 
 
-fwrite($file, file_get_contents('php://input')); 
-fwrite($file, json_decode( file_get_contents('php://input') , true)); 
+fwrite($file, json_decode(file_get_contents('php://input'), true) ); 
+ 
 
 fclose($file);    
 
