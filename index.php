@@ -35,7 +35,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         "id":"' . $sender . '"
         },
         "message":{
-            "text": "Your message is '. $input['entry'][0]['messaging'][0]['message']['text'] .'"
+            "text": "Your image path is '. $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['url'] .'"
         }
     }';
 
