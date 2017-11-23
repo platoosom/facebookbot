@@ -1,7 +1,6 @@
-
 <?php
 
-$access_token = '12345EUZB52ZBLYziFtXjZCZAUZBmqlUtuemBnbbkN3M25NBKutMZCDzngjD0Uxz530fFmIiJHnFDHZBen9KRGvWZBjnti5awKG6a1g4XfaO8ZCKVfG2Cer5nu3W0uvubzk4wYfpsZCc9QfLGe2tiVZA5JGY6QZDZD';
+$access_token = 'EAAFUz3HsNTEBAFZAeDiZA8ywOtEUZB52ZBLYziFtXjZCZAUZBmqlUtuemBnbbkN3M25NBKutMZCDzngjD0Uxz530fFmIiJHnFDHZBen9KRGvWZBjnti5awKG6a1g4XfaO8ZCKVfG2Cer5nu3W0uvubzk4wYfpsZCc9QfLGe2tiVZA5JGY6QZDZD';
 
 /* validate verify token needed for setting up web hook */ 
 
@@ -14,6 +13,7 @@ if (isset($_GET['hub_verify_token'])) {
         return;
     }
 }
+
 
 
 /* receive and send messages */
@@ -35,7 +35,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         "id":"' . $sender . '"
         },
         "message":{
-            "text": "OK"
+            "text": "Your message is '. $input['entry'][0]['messaging'][0]['message']['text'] .'"
         }
     }';
 
