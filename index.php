@@ -19,17 +19,10 @@ if (isset($_GET['hub_verify_token'])) {
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
 
-/* Debug data */
-$file = fopen("logs.txt","w"); 
-fwrite( $file, $input['entry'][0]['messaging'][0]['sender']['id'] ); 
-fclose($file); 
-
-
 
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
-    $message = $input['entry'][0]['messaging'][0]['message']['text']; //text that user sent
 
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
@@ -50,8 +43,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    if (!empty($message)) {
-        $result = curl_exec($ch); // user will get the message
-    }
+
+    $result = curl_exec($ch); // user will get the message
 } 
 
