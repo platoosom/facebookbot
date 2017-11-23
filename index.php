@@ -44,3 +44,6 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $result = curl_exec($ch); // user will get the message
     }
 }
+
+x
+
