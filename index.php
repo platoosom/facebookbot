@@ -14,14 +14,17 @@ if (isset($_GET['hub_verify_token'])) {
     }
 }
 
-/* Debug data */
-$file = fopen("logs.txt","w"); 
-fwrite( $file, file_get_contents('php://input') ); 
-fclose($file); 
 
 
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
+
+/* Debug data */
+$file = fopen("logs.txt","w"); 
+fwrite( $file, $input['entry'][0]['messaging'][0]['sender']['id'] ); 
+fclose($file); 
+
+
 
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
