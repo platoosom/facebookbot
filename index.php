@@ -13,18 +13,6 @@ if (isset($_GET['hub_verify_token'])) {
         return;
     }
 }
-  
-
-
-
-// Debug data
-$file = fopen("logs.txt","w"); 
-
-fwrite($file, json_decode(file_get_contents('php://input'), true) ); 
- 
-
-fclose($file);    
-
 
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
@@ -47,14 +35,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             "text": "OK"
         }
     }';
-    
-    // Debug data
-    $file = fopen("logs.txt","w"); 
-    
-    fwrite($file, file_get_contents('php://input')); 
-    
-    fclose($file);    
-    
+
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
