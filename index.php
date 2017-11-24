@@ -32,9 +32,11 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     /*prepare response*/
     $resp = array(
       'recipient' => array(
-        'id' => $sender,
-        'message' => 'Your message is '. $input['entry'][0]['messaging'][0]['message']['text'] ,
+        'id' => $sender
       ),
+      'message' => array(
+        'text' => 'Your message is '. $input['entry'][0]['messaging'][0]['message']['text']
+      )
     );
     $jsonData = json_encode($resp);
     
