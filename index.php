@@ -27,7 +27,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
 
     $file = fopen("logs.txt","w");
-    fwrite($file, $sticker ); 
+    fwrite($file, file_get_contents('php://input') ); 
     fclose($file);
 
 
