@@ -23,22 +23,20 @@ $input = json_decode(file_get_contents('php://input'), true);
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
-    $lat = $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['coordinates']['lat'];
-    
+
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
     /*initialize curl*/
     $ch = curl_init($url);
     
     /*prepare response*/
-    $jsonData = '{
-    "recipient":{
-        "id":"' . $sender . '"
-        },
-        "message":{
-            "text": "Your latitude location is '. $lat .'"
-        }
-    }';
+    $resp = array(
+      'recipient' => array(
+        'id' => $sender,
+        'message' => 'Your message is '. $input['entry'][0]['messaging'][0]['message']['text'] ,
+      ),
+    );
+    $jsonData = json_encode($resp);
 
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -47,4 +45,3 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
     $result = curl_exec($ch); // user will get the message
 } 
-
