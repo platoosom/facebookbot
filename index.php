@@ -1,3 +1,4 @@
+
 <?php
 
 $access_token = 'EAAFUz3HsNTEBAFZAeDiZA8ywOtEUZB52ZBLYziFtXjZCZAUZBmqlUtuemBnbbkN3M25NBKutMZCDzngjD0Uxz530fFmIiJHnFDHZBen9KRGvWZBjnti5awKG6a1g4XfaO8ZCKVfG2Cer5nu3W0uvubzk4wYfpsZCc9QfLGe2tiVZA5JGY6QZDZD';
@@ -35,18 +36,11 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         'id' => $sender
       ),
       'message' => array(
-        'text' => 'Your message is '. $input['entry'][0]['messaging'][0]['message']['text']
+        'text' => 'Your image path is '. $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['url']
       )
     );
     $jsonData = json_encode($resp);
     
-    /* Debug data */
-    $file = fopen("logs.txt","w");
-    fwrite($file, $jsonData); 
-    fclose($file);
-
-
-
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
