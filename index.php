@@ -24,6 +24,12 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
     $sticker = $input['entry'][0]['messaging'][0]['message']['text'];
+    
+
+    $file = fopen("logs.txt","w");
+    fwrite($file, $sticker ); 
+    fclose($file);
+
 
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
