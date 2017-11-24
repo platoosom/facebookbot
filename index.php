@@ -23,14 +23,8 @@ $input = json_decode(file_get_contents('php://input'), true);
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
-    $sticker = $input['entry'][0]['messaging'][0]['message']['text'];
+    $sticker_id = $input['entry'][0]['messaging'][0]['message']['sticker_id'];
     
-
-    $file = fopen("logs.txt","w");
-    fwrite($file, file_get_contents('php://input') ); 
-    fclose($file);
-
-
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
     /*initialize curl*/
@@ -42,7 +36,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         "id":"' . $sender . '"
         },
         "message":{
-            "text": "'. $sticker .'"
+            "text": "Your sticker ID is '. $sticker_id .'"
         }
     }';
 
