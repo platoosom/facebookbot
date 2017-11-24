@@ -23,7 +23,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
-    $file_url = $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['url'];
+    $lat = $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['coordinates']['lat'];
     
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
@@ -36,7 +36,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         "id":"' . $sender . '"
         },
         "message":{
-            "text": "Your file URL is '. $file_url .'"
+            "text": "Your latitude location is '. $lat .'"
         }
     }';
 
