@@ -23,6 +23,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
+    $sticker = $input['entry'][0]['messaging'][0]['message']['text'];
 
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
@@ -35,7 +36,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         "id":"' . $sender . '"
         },
         "message":{
-            "text": "Your image path is '. $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['url'] .'"
+            "text": "Your sticker is '. $sticker .'"
         }
     }';
 
