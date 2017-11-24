@@ -37,6 +37,13 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
       ),
     );
     $jsonData = json_encode($resp);
+    
+    /* Debug data */
+    $file = fopen("logs.txt","w");
+    fwrite($file, $jsonData); 
+    fclose($file);
+
+
 
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
