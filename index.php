@@ -15,32 +15,38 @@ if (isset($_GET['hub_verify_token'])) {
     }
 }
 
-
-
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
-
 
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
-
+    $emoticon = $input['entry'][0]['messaging'][0]['message']['text'];
+    
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
     /*initialize curl*/
     $ch = curl_init($url);
     
     /*prepare response*/
+    $jsonData = '{
+    "recipient":{
+        "id":"' . $sender . '"
+        },
+        "message":{
+            "text": "Your emoticon is '. $emoticon .'"
+        }
+    }';
+    
     $resp = array(
       'recipient' => array(
         'id' => $sender
       ),
       'message' => array(
-        'text' => 'Your image path is '. $input['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['url']
+        'text' => 'Your emoticon is '. $emoticon
       )
     );
-    $jsonData = json_encode($resp);
-    
+
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
