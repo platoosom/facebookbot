@@ -20,8 +20,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
-    $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id
-    $emoticon = $input['entry'][0]['messaging'][0]['message']['text'];
+    $sender = $input['entry'][0]['messaging'][0]['sender']['id']; //sender facebook id 
     
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
 
@@ -29,23 +28,17 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     $ch = curl_init($url);
     
     /*prepare response*/
-    $jsonData = '{
-    "recipient":{
-        "id":"' . $sender . '"
-        },
-        "message":{
-            "text": "Your emoticon is '. $emoticon .'"
-        }
-    }';
-    
+    $message = 'What sup man';
+        
     $resp = array(
       'recipient' => array(
         'id' => $sender
       ),
       'message' => array(
-        'text' => 'Your emoticon is '. $emoticon
+        'text' => $message
       )
     );
+    $jsonData = json_encode($resp);
 
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
