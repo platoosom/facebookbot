@@ -37,7 +37,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             'attachment' => array(
                 'type' => 'video',
                 'payload' => array(
-                    'url' => 'http://www.select2web.com/downloads/keyboard.mp4',
+                    'url' => 'https://gcs-vimeo.akamaized.net/exp=1511793265~acl=%2A%2F796537681.mp4%2A~hmac=5f7c7efdc7e2b590d99d7aecd007628a4a8bb7d718d449b2126fa43d02e20a73/vimeo-prod-skyfire-std-us/01/324/9/226624975/796537681.mp4',
                     'is_reusable' => true
                 )
             )
