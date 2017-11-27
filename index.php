@@ -34,9 +34,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
       'recipient' => array(
         'id' => $sender
       ),
-      'message' => array(
-        'attachment' => $message
-      )
+      'message' => $message
     );
     $jsonData = json_encode($resp);
 
