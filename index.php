@@ -27,20 +27,15 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     /*initialize curl*/
     $ch = curl_init($url);
     
-    /*prepare response*/       
+    /*prepare response*/    
+    $message = ':)';
     $resp = array(
       'messaging_type' => 'RESPONSE',  
       'recipient' => array(
         'id' => $sender
       ),
       'message' => array(
-        'attachment' => array(
-            'type' => 'image',
-            'payload' => array(
-                'url' => 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=1500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-                'is_reusable' => true
-            )
-        )
+        'attachment' => $message
       )
     );
     $jsonData = json_encode($resp);
