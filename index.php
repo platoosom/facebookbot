@@ -28,7 +28,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     $ch = curl_init($url);
     
     /*prepare response*/
-    $message = 'What sup man';
+    $message = ':)';
 
     $resp     = array(
         'recipient' => array(
