@@ -28,18 +28,21 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     $ch = curl_init($url);
     
     /*prepare response*/
-    $message = ':)';
-
     $resp     = array(
         'messaging_type' => 'RESPONSE',
         'recipient' => array(
             'id' => $sender
         ),
         'message' => array(
-            'text' => $message
+            'attachment' => array(
+                'type' => 'video',
+                'payload' => array(
+                    'url' => 'https://gcs-vimeo.akamaized.net/exp=1511790480~acl=%2A%2F796537780.mp4%2A~hmac=50f5117532ec1b46814df68bc60757d888bdd0945e079a433f66f69c23a3c1de/vimeo-prod-skyfire-std-us/01/324/9/226624999/796537780.mp4',
+                    'is_reusable' => true
+                )
+            )
         )
     );
-    $jsonData = json_encode($resp);
 
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
