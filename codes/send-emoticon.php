@@ -31,6 +31,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     $message = ':)';
 
     $resp     = array(
+        'messaging_type' => 'RESPONSE',
         'recipient' => array(
             'id' => $sender
         ),
