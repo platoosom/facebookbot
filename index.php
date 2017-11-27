@@ -37,7 +37,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             'attachment' => array(
                 'type' => 'video',
                 'payload' => array(
-                    'url' => 'https://www.videvo.net/videvo_files/converted/2013_06/videos/OldFashionedFilmLeaderCountdownVidevo.mov22394.mp4',
+                    'url' => 'http://www.select2web.com/downloads/keyboard.mp4',
                     'is_reusable' => true
                 )
             )
