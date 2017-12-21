@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 
 $access_token = 'EAAFUz3HsNTEBACQcoC5nzuLMKxDYfaAzdnbEX3pThnbzQZAjQSDDzzoZC7FLGmk0ZAO3wm6a90MiDVZB3a81zrqaFakTBmK2ZCxsySoQTZA7ZBeCBemeWcV5hFtLDKLdY5SN3ZBVNvxli0g28zCidUf82Jine21D76vKrlCAuNthqAZDZD';
 
@@ -121,7 +122,6 @@ fclose($file);
         $result = curl_exec($ch); // user will get the message
         
     }else{
-        session_start();
 
         // Random question of game.
         $index = array_rand($questions);
