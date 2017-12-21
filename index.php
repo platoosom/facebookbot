@@ -72,6 +72,10 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $content = fread($file); 
         $sessions = json_decode($content);
         fclose($file); 
+
+        $file = fopen("logs.txt","w+"); 
+        fwrite($file, $content.'xxxxxx'.$sender);
+        fclose($file); 
         
         // Get current question.
         $question = $questions[ $sessions[$sender] ];
@@ -86,7 +90,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'id' => $sender
                     ),
                     'message' => array(
-                        'text' => $sender.'xx'.$sessions .$answer. ' is right!!. Good',
+                        'text' => $answer. ' is right!!. Good',
                     ),
                 );
                 $jsonData = json_encode($resp);
@@ -100,7 +104,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'id' => $sender
                     ),
                     'message' => array(
-                        'text' => $sender.'xx'.$sessions .$answer. ' is wrong. Please answer again.',
+                        'text' => $answer. ' is wrong. Please answer again.',
                     ),
                 );
                 $jsonData = json_encode($resp);
