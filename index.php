@@ -68,7 +68,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         list($keyword, $answer) = explode(':', $text_from_user);
 
         // Get session data.
-        $file = fopen("session.txt","w+"); 
+        $file = fopen("session.txt","r"); 
         $content = fread($file); 
         $sessions = json_decode($content);
         fclose($file); 
