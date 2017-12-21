@@ -102,6 +102,11 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
         }
 
+/* Debug data */
+$file = fopen("logs.txt","w"); 
+fwrite($file, json_encode($question)); 
+fclose($file); 
+
         // Facebook API endpoint.
         $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
         
