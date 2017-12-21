@@ -72,7 +72,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $sessions = json_decode($content);
 
         $file = fopen("logs.txt","w+"); 
-        fwrite($file, $content.'xxxxxx'.$sender);
+        fwrite($file, $sessions[$sender]);
         fclose($file); 
         
         // Get current question.
