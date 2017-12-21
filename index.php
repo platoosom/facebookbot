@@ -69,7 +69,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
         // Get session data.
         $content = file_get_contents('session.txt');
-        $sessions = json_decode($content);
+        $sessions = json_decode($content, true);
 
         // Get current question.
         $question = $questions[ $sessions[$sender] ];
@@ -137,7 +137,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $content = file_get_contents('session.txt');
         
         if($content){
-            $sessions = json_decode($content);
+            $sessions = json_decode($content, true);
         }
         $sessions[$sender] = $index;
         
