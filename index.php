@@ -143,31 +143,6 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'is_reusable' => false
                     )
                 ),
-            ),
-        );
-        $jsonData = json_encode($resp);
-
-        /* curl setting to send a json post data */
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-
-        $result = curl_exec($ch); // user will get the message
-
-        /* Debug data */
-        $file = fopen("logs.txt","w"); 
-        fwrite($file, $result); 
-        fwrite($file, $question['image']); 
-        
-        fclose($file); 
-
-        /*prepare response*/
-        $resp     = array(
-            'messaging_type' => 'RESPONSE',
-            'recipient' => array(
-                'id' => $sender
-            ),
-            'message' => array(
                 'text' => $question['text'],
                 'text' => 'You can answer game in this format answer:xxx',
             ),
@@ -181,24 +156,6 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
         $result = curl_exec($ch); // user will get the message
 
-        /*prepare response*/
-        $resp     = array(
-            'messaging_type' => 'RESPONSE',
-            'recipient' => array(
-                'id' => $sender
-            ),
-            'message' => array(
-                'text' => 'You can answer game in this format answer:xxx',
-            ),
-        );
-        $jsonData = json_encode($resp);
-
-        /* curl setting to send a json post data */
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-
-        $result = curl_exec($ch); // user will get the message
     }
 
 } 
