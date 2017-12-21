@@ -68,10 +68,8 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         list($keyword, $answer) = explode(':', $text_from_user);
 
         // Get session data.
-        $file = fopen("session.txt","r"); 
-        $content = fread($file); 
+        $content = file_get_contents('session.txt');
         $sessions = json_decode($content);
-        fclose($file); 
 
         $file = fopen("logs.txt","w+"); 
         fwrite($file, $content.'xxxxxx'.$sender);
@@ -133,14 +131,14 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         /* keep data in session */
         $sessions = array();
         
-        $file = fopen("session.txt","w+");
-        $content = fread($file);
-
+        $content = file_get_contents('session.txt');
+        
         if($content){
             $sessions = json_decode($content);
         }
         $sessions[$sender] = $index;
-
+        
+        $file = fopen("session.txt","w");
         fwrite($file, json_encode($sessions) ); 
         fclose($file); 
 
