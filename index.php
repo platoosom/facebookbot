@@ -86,7 +86,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'id' => $sender
                     ),
                     'message' => array(
-                        'text' => $sender.'xx'.$sessions[$sender].$answer. ' is right!!. Good',
+                        'text' => $sender.'xx'.$sessions .$answer. ' is right!!. Good',
                     ),
                 );
                 $jsonData = json_encode($resp);
@@ -100,7 +100,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'id' => $sender
                     ),
                     'message' => array(
-                        'text' => $sender.'xx'.$sessions[$sender].$answer. ' is wrong. Please answer again.',
+                        'text' => $sender.'xx'.$sessions .$answer. ' is wrong. Please answer again.',
                     ),
                 );
                 $jsonData = json_encode($resp);
