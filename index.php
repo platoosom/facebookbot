@@ -63,7 +63,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     );
 
     // Find string pattern.
-    if(strpos('answer:', $text_from_user) !== false) {
+    if(strpos($text_from_user, 'answer:') !== false) {
         
         // Check answer
         list($keyword, $answer) = explode(':', $text_from_user);
