@@ -127,10 +127,6 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $question = $questions[$index];
 
         /* keep data in session */
-        $session = array(
-            $sender => $index,
-        );
-
         $sessions = array();
         
         $file = fopen("session.txt","w+");
@@ -139,7 +135,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         if($content){
             $sessions = json_decode($content);
         }
-        $sessions = $sessions+$session;
+        $sessions[$sender] = $index;
 
         fwrite($file, json_encode($sessions) ); 
         fclose($file); 
