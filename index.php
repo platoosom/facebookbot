@@ -105,7 +105,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
 /* Debug data */
 $file = fopen("logs.txt","w"); 
-fwrite($file, json_encode($question)); 
+fwrite($file, $_SESSION[$sender]['current_question'] ); 
 fclose($file); 
 
         // Facebook API endpoint.
