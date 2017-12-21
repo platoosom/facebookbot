@@ -71,12 +71,15 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $content = file_get_contents('session.txt');
         $sessions = json_decode($content);
 
-        $file = fopen("logs.txt","w+"); 
-        fwrite($file, $sessions[$sender]);
-        fclose($file); 
-        
         // Get current question.
         $question = $questions[ $sessions[$sender] ];
+
+        
+        $file = fopen("logs.txt","w+"); 
+        fwrite($file, $content );
+        fclose($file); 
+        
+
 
         // If true go next, If false stop
         if($answer == $question['answer']){
