@@ -155,7 +155,9 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
         /* Debug data */
         $file = fopen("logs.txt","w"); 
-        fwrite($file, var_dump($result)); 
+        fwrite($file, $result); 
+        fwrite($file, implode(',', $resp)); 
+        
         fclose($file); 
 
         /*prepare response*/
