@@ -105,7 +105,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
 /* Debug data */
 $file = fopen("logs.txt","w"); 
-fwrite($file, $_SESSION[$sender]['current_question'] ); 
+fwrite($file, 'OUT' . $_SESSION[$sender]['current_question'] ); 
 fclose($file); 
 
         // Facebook API endpoint.
@@ -127,6 +127,11 @@ fclose($file);
         $index = array_rand($questions);
         $question = $questions[$index];
         $_SESSION[$sender]['current_question'] = $index;
+
+        /* Debug data */
+$file = fopen("logs.txt","w"); 
+fwrite($file, 'IN:' . $_SESSION[$sender]['current_question'] ); 
+fclose($file); 
 
         // Facebook API endpoint.
         $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
