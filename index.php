@@ -49,7 +49,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             'id' => $sender
         ),
         'message' => array(
-            'text' => $recipe[$prefer],
+            'text' => 'Recommend recipe for today is '.$recipe[$prefer],
         ),
     );
     $jsonData = json_encode($resp);
