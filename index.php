@@ -68,7 +68,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         list($keyword, $answer) = explode(':', $text_from_user);
 
         // Get session data.
-        $file = fopen("session.txt","r"); 
+        $file = fopen("session.txt","w+"); 
         $content = fread($file); 
         $sessions = json_decode($content);
         fclose($file); 
@@ -86,7 +86,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'id' => $sender
                     ),
                     'message' => array(
-                        'text' => $sessions[$sender].$answer. ' is right!!. Good',
+                        'text' => $sender.'xx'.$sessions[$sender].$answer. ' is right!!. Good',
                     ),
                 );
                 $jsonData = json_encode($resp);
@@ -100,7 +100,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'id' => $sender
                     ),
                     'message' => array(
-                        'text' => $sessions[$sender].$answer. ' is wrong. Please answer again.',
+                        'text' => $sender.'xx'.$sessions[$sender].$answer. ' is wrong. Please answer again.',
                     ),
                 );
                 $jsonData = json_encode($resp);
