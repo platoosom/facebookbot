@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $access_token = 'EAAFUz3HsNTEBACQcoC5nzuLMKxDYfaAzdnbEX3pThnbzQZAjQSDDzzoZC7FLGmk0ZAO3wm6a90MiDVZB3a81zrqaFakTBmK2ZCxsySoQTZA7ZBeCBemeWcV5hFtLDKLdY5SN3ZBVNvxli0g28zCidUf82Jine21D76vKrlCAuNthqAZDZD';
 
@@ -67,9 +66,15 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         
         // Check answer
         list($keyword, $answer) = explode(':', $text_from_user);
+
+        // Get session data.
+        $file = fopen("session.txt","r"); 
+        $content = fread($file); 
+        $sessions = json_decode($content);
+        fclose($file); 
         
         // Get current question.
-        $question = $questions[ $_SESSION[$sender] ];
+        $question = $questions[ $sessions[$sender] ];
 
         // If true go next, If false stop
         if($answer == $question['answer']){
@@ -102,14 +107,6 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
         }
 
-/* Debug data */
-$file = fopen("logs.txt","a"); 
-fwrite($file, 'OUT' . $_SESSION[$sender] ); 
-fwrite($file, 'OUT' . json_encode($_SESSION) ); 
-fwrite($file, 'OUT' . $sender ); 
-
-fclose($file); 
-
         // Facebook API endpoint.
         $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
         
@@ -128,13 +125,24 @@ fclose($file);
         // Random question of game.
         $index = array_rand($questions);
         $question = $questions[$index];
-        $_SESSION[$sender] = $index;
 
-        /* Debug data */
-$file = fopen("logs.txt","a"); 
-fwrite($file, 'IN:' . $_SESSION[$sender] ); 
-fwrite($file, 'IN:' . $sender ); 
-fclose($file); 
+        /* keep data in session */
+        $session = array(
+            $sender => $index,
+        );
+
+        $sessions = array();
+        
+        $file = fopen("session.txt","w+");
+        $content = fread($file);
+
+        if($content){
+            $sessions = json_decode($content);
+        }
+        $sessions = array_merge($sessions, $session);
+
+        fwrite($file, json_encode($sessions) ); 
+        fclose($file); 
 
         // Facebook API endpoint.
         $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
