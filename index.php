@@ -104,8 +104,10 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         }
 
 /* Debug data */
-$file = fopen("logs.txt","w"); 
+$file = fopen("logs.txt","a"); 
 fwrite($file, 'OUT' . $_SESSION[$sender]['current_question'] ); 
+fwrite($file, 'OUT' . json_encode($_SESSION) ); 
+
 fclose($file); 
 
         // Facebook API endpoint.
@@ -129,7 +131,7 @@ fclose($file);
         $_SESSION[$sender]['current_question'] = $index;
 
         /* Debug data */
-$file = fopen("logs.txt","w"); 
+$file = fopen("logs.txt","a"); 
 fwrite($file, 'IN:' . $_SESSION[$sender]['current_question'] ); 
 fclose($file); 
 
