@@ -100,7 +100,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                     ),
                 );
                 $jsonData = json_encode($resp);
-                
+
         }
 
         // Facebook API endpoint.
@@ -123,6 +123,12 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $question = $questions[$index];
         $_SESSION[$sender]['current_question'] = $index;
 
+        // Facebook API endpoint.
+        $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
+        
+        /*initialize curl*/
+        $ch = curl_init($url);
+        
         /*prepare response*/
         $resp     = array(
             'messaging_type' => 'RESPONSE',
@@ -137,16 +143,45 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                         'is_reusable' => false
                     )
                 ),
+            ),
+        );
+
+        /* curl setting to send a json post data */
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+        $result = curl_exec($ch); // user will get the message
+
+        /*prepare response*/
+        $resp     = array(
+            'messaging_type' => 'RESPONSE',
+            'recipient' => array(
+                'id' => $sender
+            ),
+            'message' => array(
                 'text' => $question['text'],
                 'text' => 'You can answer game in this format answer:xxx',
             ),
         );
 
-        // Facebook API endpoint.
-        $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='. $access_token;
-        
-        /*initialize curl*/
-        $ch = curl_init($url);
+        /* curl setting to send a json post data */
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+        $result = curl_exec($ch); // user will get the message
+
+        /*prepare response*/
+        $resp     = array(
+            'messaging_type' => 'RESPONSE',
+            'recipient' => array(
+                'id' => $sender
+            ),
+            'message' => array(
+                'text' => 'You can answer game in this format answer:xxx',
+            ),
+        );
 
         /* curl setting to send a json post data */
         curl_setopt($ch, CURLOPT_POST, 1);
