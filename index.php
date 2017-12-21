@@ -116,6 +116,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         $result = curl_exec($ch); // user will get the message
         
     }else{
+        session_start();
 
         // Random question of game.
         $index = array_rand($questions);
@@ -144,6 +145,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                 ),
             ),
         );
+        $jsonData = json_encode($resp);
 
         /* curl setting to send a json post data */
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -170,6 +172,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                 'text' => 'You can answer game in this format answer:xxx',
             ),
         );
+        $jsonData = json_encode($resp);
 
         /* curl setting to send a json post data */
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -188,6 +191,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
                 'text' => 'You can answer game in this format answer:xxx',
             ),
         );
+        $jsonData = json_encode($resp);
 
         /* curl setting to send a json post data */
         curl_setopt($ch, CURLOPT_POST, 1);
