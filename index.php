@@ -70,7 +70,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         list($keyword, $answer) = explode(':', $text_from_user);
         
         // Get current question.
-        $question = $questions[$_SESSION[$sender]['current_question']];
+        $question = $questions[ $_SESSION[$sender] ];
 
         // If true go next, If false stop
         if($answer == $question['answer']){
@@ -105,7 +105,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
 
 /* Debug data */
 $file = fopen("logs.txt","a"); 
-fwrite($file, 'OUT' . $_SESSION[$sender]['current_question'] ); 
+fwrite($file, 'OUT' . $_SESSION[$sender] ); 
 fwrite($file, 'OUT' . json_encode($_SESSION) ); 
 fwrite($file, 'OUT' . $sender ); 
 
@@ -129,11 +129,11 @@ fclose($file);
         // Random question of game.
         $index = array_rand($questions);
         $question = $questions[$index];
-        $_SESSION[$sender]['current_question'] = $index;
+        $_SESSION[$sender] = $index;
 
         /* Debug data */
 $file = fopen("logs.txt","a"); 
-fwrite($file, 'IN:' . $_SESSION[$sender]['current_question'] ); 
+fwrite($file, 'IN:' . $_SESSION[$sender] ); 
 fwrite($file, 'IN:' . $sender ); 
 fclose($file); 
 
