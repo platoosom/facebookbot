@@ -139,7 +139,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         if($content){
             $sessions = json_decode($content);
         }
-        $sessions = array_merge($sessions, $session);
+        $sessions = $sessions+$session;
 
         fwrite($file, json_encode($sessions) ); 
         fclose($file); 
