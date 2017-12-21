@@ -48,7 +48,9 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         'recipient' => array(
             'id' => $sender
         ),
-        'message' => $recipe[$prefer],
+        'message' => array(
+            'text' => $recipe[$prefer],
+        ),
     );
     $jsonData = json_encode($resp);
 
