@@ -59,6 +59,36 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             'text' => '3 พยางค์',
             'answer' => 'บังกะโล',
         ),
+        '8' => array(
+            'image' => 'http://img.online-station.net/_news/2010/1001/41367_1.gif',
+            'text' => '5 พยางค์',
+            'answer' => 'ไก่แก่แม่ปลาช่อน',
+        ),
+        '9' => array(
+            'image' => 'http://img.online-station.net/_news/2010/1001/41367_3_1.gif',
+            'text' => '4 พยางค์',
+            'answer' => 'หน่อไม้ฝรั่ง',
+        ),
+        '10' => array(
+            'image' => 'http://img.online-station.net/_news/2010/1001/41367_6.gif',
+            'text' => '2 พยางค์',
+            'answer' => 'กับดัก',
+        ),
+        '11' => array(
+            'image' => 'http://img.online-station.net/_news/2010/1001/41367_7.gif',
+            'text' => '2 พยางค์',
+            'answer' => 'จิ๊กโก๋',
+        ),
+        '12' => array(
+            'image' => 'http://img.online-station.net/_news/2010/1001/41367_9_1.gif',
+            'text' => '4 พยางค์',
+            'answer' => 'คาบลูกคาบดอก',
+        ),
+        '13' => array(
+            'image' => 'http://img.online-station.net/_news/2010/1001/41367_10_1.gif',
+            'text' => '3 พยางค์',
+            'answer' => 'หญ้าเจ้าชู้',
+        ),
     );
 
     // Find string pattern.
