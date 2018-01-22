@@ -41,7 +41,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
         ),
         '4' => array(
             'image' => 'https://scontent-fbkk5-7.us-fbcdn.net/v1/t.1-48/1426l78O9684I4108ZPH0J4S8_842023153_K1DlXQOI5DHP/dskvvc.qpjhg.xmwo/p/data/127/127071-4-3521.gif',
-            'text' => '3 พยางค์',
+            'text' => '2 พยางค์',
             'answer' => 'เหล็กกล้า',
         ),
         '5' => array(
